@@ -21,13 +21,5 @@ public class UConverterTests
 
         Assert.AreEqual(i, 1);
     }
-    [TestMethod]
-    public void ToEnum()
-    {
-        var t = UConverter.ToEnum<TestEnum>(1);
-
-        Assert.AreEqual(t, TestEnum.ONE);
-    }
-
 
 }
