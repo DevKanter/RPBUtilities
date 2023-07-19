@@ -98,5 +98,7 @@ public class ByteBufferTests
         Assert.AreEqual(c, 'X');
         Assert.AreEqual(str, "string");
 
+        Assert.IsTrue(buffer.DoneReading());
+
     }
 }
