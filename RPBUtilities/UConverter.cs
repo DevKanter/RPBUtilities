@@ -17,32 +17,6 @@ namespace RPBUtilities
         {
             return *(int*)(&enumValue);
         }
-
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static unsafe TEnum ToEnum<TEnum>(int intValue)
-            where TEnum : unmanaged, Enum
-        {
-            return *(TEnum*)(&intValue);
-        }
-
-        //[MethodImpl(MethodImplOptions.AggressiveInlining)]
-        //public static unsafe byte[] ToByteArray<TInput>(TInput value) where TInput : unmanaged
-        //{
-        //    var result = new byte[sizeof(TInput)];
-        //    fixed (byte* b = &result[0])
-        //    {
-        //        Unsafe.Write(b, value);
-        //        return result;
-        //    }
-        //}
-        //[MethodImpl(MethodImplOptions.AggressiveInlining)]
-        //public static unsafe TOutput ToStruct<TOutput>(byte[] bytes) where TOutput : unmanaged
-        //{
-        //    fixed (byte* b = &bytes[0])
-        //    {
-        //        return Unsafe.Read<TOutput>(b);
-        //    }
-        //}
     }
 
 }
