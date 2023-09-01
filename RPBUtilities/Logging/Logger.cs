@@ -6,10 +6,14 @@ namespace RPBUtilities.Logging
 {
     public static class Logger<TLoggerEnum> where TLoggerEnum : unmanaged,Enum
     {
-        private static Dictionary<int, IRPBLogger> _loggers;
+        private static Dictionary<int, IRPBLogger> _loggers = new Dictionary<int, IRPBLogger>();
         public static void Initialize(Dictionary<TLoggerEnum, IRPBLogger> loggers)
         {
-            _loggers = loggers.ToDictionary(node => UConverter.ToInt<TLoggerEnum>(node.Key), node => node.Value);
+            foreach (var rpbLogger in loggers)
+            {
+                _loggers.Add(UConverter.ToInt(rpbLogger.Key),rpbLogger.Value);
+            }
+   
         }
 
         public static void Log(string message, LogLevel level, TLoggerEnum loggerRef)

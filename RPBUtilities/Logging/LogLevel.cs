@@ -2,11 +2,12 @@
 {
     public enum LogLevel
     {
-        SYSTEM_MESSAGE = 1,
+        FATAL_ERROR = 1,
         ERROR = 2,
         WARNING = 10,
-        INFO = 100,
-        SUCCESS = 200,
+        SUCCESS = 100,
+        INFO = 200,
+        SYSTEM_MESSAGE = 300,
         FULL = 1000
     }
 }

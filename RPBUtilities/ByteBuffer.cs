@@ -69,13 +69,35 @@ namespace RPBUtilities
         /// <returns></returns>
         public void Write(string s)
         {
-            var size = (ushort)s.Length;
+            Write(s.Length);
 
-            Write(size);
+            Buffer.BlockCopy(Encoding.ASCII.GetBytes(s),0,Data,_head,s.Length);
 
-            Buffer.BlockCopy(Encoding.ASCII.GetBytes(s),0,Data,_head,size);
+            _head += s.Length;
+        }
 
+        /// <summary>
+        /// Writes a byte[] to the buffer.
+        /// </summary>
+        /// <returns></returns>
+        public void Write(byte[] bytes)
+        {
+            Write(bytes.Length);
+            Buffer.BlockCopy(bytes,0,Data,_head,bytes.Length);
+            _head += bytes.Length;
+        }
+
+        /// <summary>
+        /// Reads a byte[] from the buffer.
+        /// </summary>
+        /// <returns></returns>
+        public byte[] ReadBytes()
+        {
+            var size = Read<int>();
+            var result = new byte[size];
+            Buffer.BlockCopy(Data,_head,result,0,size);
             _head += size;
+            return result;
         }
         /// <summary>
         /// Writes a string to the buffer.
@@ -83,7 +105,7 @@ namespace RPBUtilities
         /// <returns></returns>
         public string ReadString()
         {
-            var size = Read<ushort>();
+            var size = Read<int>();
             var bytes = new byte[size];
 
             Buffer.BlockCopy(Data,_head,bytes,0,size);

@@ -13,15 +13,23 @@ namespace RPBUtilities.Logging.Loggers
         }
         private ConsoleColor _getConsoleColor(LogLevel level)
         {
-            return level switch
+            switch (level)
             {
-                LogLevel.SYSTEM_MESSAGE => ConsoleColor.DarkRed,
-                LogLevel.ERROR => ConsoleColor.Red,
-                LogLevel.WARNING => ConsoleColor.DarkYellow,
-                LogLevel.INFO => ConsoleColor.White,
-                LogLevel.SUCCESS => ConsoleColor.Green,
-                _ => ConsoleColor.White
-            };
+                case LogLevel.FATAL_ERROR:
+                    return ConsoleColor.DarkRed;
+                case LogLevel.ERROR:
+                    return ConsoleColor.Red;
+                case LogLevel.WARNING:
+                    return ConsoleColor.DarkYellow;
+                case LogLevel.INFO:
+                    return ConsoleColor.White;
+                case LogLevel.SUCCESS:
+                    return ConsoleColor.Green;
+                case LogLevel.SYSTEM_MESSAGE:
+                    return ConsoleColor.Gray;
+                default:
+                    return ConsoleColor.White;
+            }
         }
     }
 }

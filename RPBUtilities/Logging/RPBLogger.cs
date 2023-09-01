@@ -23,13 +23,17 @@ namespace RPBUtilities.Logging
         }
         private Action<string,LogLevel> _getLogAction(LogType type, Action<string,LogLevel> customAction = null)
         {
-            return type switch
+            switch (type)
             {
-                LogType.CONSOLE => _logConsole,
-                LogType.FILE => _logFile,
-                LogType.CUSTOM => customAction,
-                _ => (s,l) => { }
-            };
+                case LogType.CONSOLE:
+                    return _logConsole;
+                case LogType.FILE:
+                    return _logFile;
+                case LogType.CUSTOM:
+                    return customAction;
+                default:
+                    return (s, l) => { };
+            }
         }
 
         protected virtual void _logConsole(string message,LogLevel level){}

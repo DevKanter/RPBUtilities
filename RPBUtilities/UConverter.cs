@@ -26,10 +26,18 @@ namespace RPBUtilities
         /// <param name="enumValue">An Enum with an int as base </param>
         /// <returns></returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static unsafe TEnum2 ToInt<TEnum1,TEnum2>(TEnum1 enumValue)
+        public static unsafe TEnum2 EnumConvert<TEnum1,TEnum2>(TEnum1 enumValue)
             where TEnum1 : unmanaged, Enum where TEnum2 : unmanaged
         {
             return *(TEnum2*)(&enumValue);
+        }
+
+
+        public static unsafe byte ToByte<TEnum>(TEnum enumValue) where TEnum: unmanaged, Enum
+        {
+            {
+                return *(byte*)(&enumValue);
+            }
         }
 
     }
