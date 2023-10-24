@@ -1,18 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace RPBUtilities.calc
+﻿namespace RPBUtilities.calc
 {
     public static class Calc
     {
-        public static bool InRange(int x,int a, int b)
+        public static bool InRange(int x, int a, int b)
         {
-            return (x >= a && x <= b);
+            return x >= a && x <= b;
         }
+
         public static bool OutOfRange(int x, int a, int b)
         {
             return x < a && x > b;
         }
-    } 
+    }
 }

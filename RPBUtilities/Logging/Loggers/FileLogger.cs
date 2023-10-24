@@ -1,6 +1,5 @@
 ﻿using System;
 using System.IO;
-using System.Security.Cryptography;
 
 namespace RPBUtilities.Logging.Loggers
 {
@@ -18,7 +17,7 @@ namespace RPBUtilities.Logging.Loggers
         {
             var date = DateTime.UtcNow;
 
-            File.AppendAllLines($"{_path}/{date:yyyyMMdd}.log", new[] { $"[{date:HH:mm:ss.fff}] : {message}"});
+            File.AppendAllLines($"{_path}/{date:yyyyMMdd}.log", new[] {$"[{date:HH:mm:ss.fff}] : {message}"});
         }
     }
 }
